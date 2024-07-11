@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /home/kuroneko/suckless/dwm
+sudo make clean install
+
+cd /home/kuroneko/suckless/dmenu
+sudo make clean install
+
+pkill dwm

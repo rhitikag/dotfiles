@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Use pywal to get colors
+source "$HOME/.cache/wal/colors.sh"
+
+# Run dmenu with IBM Plex Bold and pywal colors
+dmenu_run -i -p "run:" -l 10 -fn 'IBM Plex:size=16:bold' \
+  -nb "$background" -nf "$foreground" \
+  -sb "$color1" -sf "$foreground"

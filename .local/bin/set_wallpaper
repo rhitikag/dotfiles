@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Directory containing your wallpapers
+WALLPAPERS_DIR="/home/kuroneko/Pictures/wallpapers"
+
+# Get list of wallpapers
+wallpapers=$(ls "$WALLPAPERS_DIR")
+
+# Select wallpaper using dmenu
+selected_wallpaper=$(echo "$wallpapers" | dmenu -p "Choose wallpaper: " -l 7)
+
+# Check if the user canceled the selection
+if [ -z "$selected_wallpaper" ]; then
+  exit
+fi
+
+# Set selected wallpaper and generate colorscheme
+wal -i "$WALLPAPERS_DIR/$selected_wallpaper"
+
+# Path to your suckless tools directory
+SUCKLESS_DIR="/home/kuroneko/suckless"
+
+# Change to the dwm directory and perform make clean install
+cd "$SUCKLESS_DIR/dwm"
+kitty sh -c "sudo make clean install"
+
+# Change to the dmenu directory and perform make clean install
+cd "$SUCKLESS_DIR/dmenu"
+kitty sh -c "sudo make clean install"
+
+# Kill the current dwm instance
+pkill dwm

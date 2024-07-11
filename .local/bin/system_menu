@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Define options
+options="Shutdown\nReboot\nSuspend\nDwm_shutdown\nDwm_reboot"
+
+# Prompt user with dmenu and store the selected option in the variable choice
+choice=$(echo -e "$options" | dmenu -p "Select an option:" -l 5)
+
+# Handle selected option
+case "$choice" in
+"Shutdown")
+	sudo shutdown now
+	;;
+"Reboot")
+	sudo reboot
+	;;
+"Suspend")
+	systemctl suspend
+	;;
+"Dwm_shutdown")
+	pkill dwm
+	;;
+"Dwm_reboot")
+	restart
+	;;
+*)
+	echo "Invalid option: $choice"
+	;;
+esac
