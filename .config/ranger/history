@@ -1,0 +1,17 @@
+shell sudo nvim config.h
+shell mkdir math-notes
+shell vector-spaces.tex
+shell touch vector-spaces.tex
+shell pdflatex vector-spaces.tex
+shell events
+shell 
+open_with events
+open_with okular
+shell pdflatex template.tex
+open_with nvim
+
+shell make
+shell ./kilo
+shell mkdir flashpoint
+shell 7zr x fp13_linux_*.7z -oFlashpoint
+delete
