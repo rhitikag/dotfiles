@@ -144,8 +144,10 @@ cmd open-with ${{
     rifle -p $method $fx
 }}
 
+set drawbox true
 set previewer ~/.config/lf/scope-lf-wrapper.sh
 map R $LESSOPEN='| ~/.config/lf/scope-lf-wrapper.sh %s' less -R $f
+
 
 # Bindings
 map <c-f> $lf -remote "send $id select \"$(fzf)\""
