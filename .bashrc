@@ -150,3 +150,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH="${PATH}:REPLACE"
 
 alias lf="lfub"
+
+# Set JAVA_HOME for java-22-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-22-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
