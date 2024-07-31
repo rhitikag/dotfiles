@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Get current brightness using brightnessctl
+curr_brightness=$(brightnessctl get)
+
+# Get maximum brightness using brightnessctl
+max_brightness=$(brightnessctl max)
+
+# Calculate brightness percentage
+brightness_per=$((100 * curr_brightness / max_brightness))
+
+# Handle different mouse button actions
+case $BLOCK_BUTTON in
+1)
+  # Action for left click (BLOCK_BUTTON 1) can be added here if needed
+  ;;
+3)
+  # Notify with the current brightness level on right-click
+  notify-send "💡 Brightness module" "💡 Current brightness level: ${brightness_per}%"
+  ;;
+6)
+  # Open the script in the editor on middle-click
+  setsid -f "$TERMINAL" -e "$EDITOR" "$0"
+  ;;
+esac
+
+# Output the current brightness level with an emoji
+echo "💡 ${brightness_per}%"
