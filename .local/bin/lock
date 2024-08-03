@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Path to your background image
+IMAGE_PATH="$1"
+
+# Generate color scheme from image
+wal -i "$IMAGE_PATH"
+
+# Load colors from wal
+source "${HOME}/.cache/wal/colors.sh"
+
+# Colors
+BACKGROUND_COLOR="00000000"       # Transparent background
+TEXT_COLOR="${color15}ff"         # White text
+TIME_COLOR="${color15}ff"         # White time
+DATE_COLOR="${color15}ff"         # White date
+RING_COLOR="${color15}ff"         # White ring
+VERIFICATION_COLOR="${color15}88" # Partially transparent verification color
+
+i3lock \
+  --image="$IMAGE_PATH" \
+  --insidever-color=$BACKGROUND_COLOR \
+  --insidewrong-color=$BACKGROUND_COLOR \
+  --inside-color=$BACKGROUND_COLOR \
+  --ringver-color=$RING_COLOR \
+  --ringwrong-color=$RING_COLOR \
+  --ring-color=$RING_COLOR \
+  --line-color=$BACKGROUND_COLOR \
+  --separator-color=$BACKGROUND_COLOR \
+  --verif-color=$VERIFICATION_COLOR \
+  --wrong-color=$TEXT_COLOR \
+  --time-color=$TIME_COLOR \
+  --date-color=$DATE_COLOR \
+  --layout-color=$TEXT_COLOR \
+  --keyhl-color=$TEXT_COLOR \
+  --bshl-color=$TEXT_COLOR \
+  --screen 1 \
+  --blur 5 \
+  --clock \
+  --indicator
+
+# This part may need to be adjusted based on the exact version and available options in i3lock-color
