@@ -4,4 +4,16 @@ XF86MonBrightnessUp
 
 # Decrease brightness
 XF86MonBrightnessDown
-    backlight down 
+    backlight down
+
+# Play/Pause Spotify
+XF86AudioPlay
+    playerctl --player=spotify play-pause
+
+# Next Track on Spotify
+XF86AudioNext
+    playerctl --player=spotify next
+
+# Previous Track on Spotify
+XF86AudioPrev
+    playerctl --player=spotify previous
