@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Set the battery threshold level for notification
+THRESHOLD=20
+SLEEP_INTERVAL=300  # Time between checks (in seconds)
+
+while true; do
+    # Get the current battery percentage
+    BATTERY_LEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
+
+    # Get charging status (Charging/Discharging)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+
+    # Check if the battery level is below the threshold and discharging
+    if [[ "$STATUS" == "Discharging" && "$BATTERY_LEVEL" -le "$THRESHOLD" ]]; then
+        # Send a pop-up notification with dunst
+        notify-send -u critical "Battery Low" "Battery level is at ${BATTERY_LEVEL}%!"
+        
+        # Play a notification sound using aplay
+        aplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+    fi
+
+    # Sleep for the defined interval before checking again
+    sleep $SLEEP_INTERVAL
+done
+

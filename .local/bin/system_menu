@@ -9,21 +9,21 @@ choice=$(echo -e "$options" | dmenu -p "Select an option:" -l 5)
 # Handle selected option
 case "$choice" in
 "Shutdown")
-	sudo shutdown now
-	;;
+  shutdown now
+  ;;
 "Reboot")
-	sudo reboot
-	;;
+  reboot
+  ;;
 "Suspend")
-	systemctl suspend
-	;;
+  systemctl suspend
+  ;;
 "Dwm_shutdown")
-	pkill dwm
-	;;
+  pkill dwm
+  ;;
 "Dwm_reboot")
-	restart
-	;;
+  restart
+  ;;
 *)
-	echo "Invalid option: $choice"
-	;;
+  echo "Invalid option: $choice"
+  ;;
 esac
